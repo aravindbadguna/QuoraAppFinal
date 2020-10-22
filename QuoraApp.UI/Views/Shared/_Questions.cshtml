@@ -1,0 +1,27 @@
+﻿@model QuoraApp.ViewModels.QuestionViewModel 
+
+  <tr>
+    <td><span class="badge badge-secondary">@Model.VotesCount</span>votes</td>
+    <td><span class="badge badge-secondary"> @Model.AnswersCount</span>answers</td>
+    <td><span class="badge badge-secondary">@Model.ViewsCount</span>views</td>
+    <td class="text-dark">
+      <a href="/Questions/View/@Model.QuestionID">@Model.QuestionName</a>
+      <br />
+      <span class="badge badge-secondary"> @Model.Category.CategoryName</span>
+    </td>
+    <td>
+      @if (Convert.ToInt32(Session["CurrentUserID"]) != Model.UserID)
+      {
+        @:by @Model.User.Name
+      }
+      else
+      {
+        @:by you
+      }
+
+
+    </td>
+    <td>
+      on @Model.QuestionDateAndTime
+    </td>
+  </tr>

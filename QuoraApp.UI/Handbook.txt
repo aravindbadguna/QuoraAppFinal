@@ -1,0 +1,99 @@
+﻿Git Link:  https://github.com/codewithsrikanth/QuoraApp
+
+- Create all the projects 
+    - Domain Models(Class Library)
+    - Repository Layer(Class Library)
+    - Service Layer(Class Library)
+    - View Models(Class Library)
+    - UI Layer(ASP.Net MVC) -   Stratup Project
+
+- Creating Domain Models and Add the Entity frmewrok Refererence (EF 6.2)
+    - User
+    - Category
+    - Question
+    - Answer
+    - Vote
+    - QuoraDBDataContext - DB CRUD Operations
+
+- Add the reference of Domain Models in all the layers
+- Add the files in Repository Layer and include Entity framework reference
+    - UserRepository
+    - CategoryRepository
+    - VotesRepository
+    - AnswerRepository
+    - QuestionsRepository
+
+- Workign with ViewModels
+    - RegisterViewModel
+    - LoginViewModel
+    - UserViewModel
+    - EditUserDetailsViewModel
+    - EditUserPasswordViewModel
+    - CategoryViewModel
+    - NewQuestionViewModel
+    - EditQuestionViewModel
+    - EditAnswerViewModel
+    - VotesViewModel
+
+ - Add the reference of ViewModels to the following Projects
+    - Service Layer
+    - UI Layer(MVC)
+
+ - Add the EF(6.2) reference in ServiceLayer
+    - Include the Mapper Extenstion
+    - Logic for converting password to SHA256 hash code
+    - UserService
+        - int InsertUser(RegisterViewModel uvm);
+        - void UpdateUserDetails(EditUserDetailsViewModel uvm);
+        - void UpdateUserPassword(EditUserPasswordViewModel uvm);
+        - void DeleteUser(int uid);
+        - List<UserViewModel> GetUsers();
+        - UserViewModel GetUsersByEmailAndPassword(string Email, string Password);
+        - UserViewModel GetUsersByEmail(string Email);
+        - UserViewModel GetUsersByUserID(int UserID);
+    - CategoryService
+    - QuestionService
+
+ - Install the packages in UI Layer
+    - jQuery(install-package jquery@latest)
+    - Popper.js(install-package popper.js)
+    - Bootstrap(install-package bootstrap)
+
+- Bundling and Minification
+    - Microsoft.AspNet.Web.Optimization
+    - BundleConfig.cs file in App_Strat folder
+    - Register the file Global.asax (Application_Start())
+
+- Layout View Page
+    - Created a HomeController
+    - Addedd Index.cshtml view page
+    - Created a file under "Views" folder with the name "_ViewStart.cshtml" and specify the layout page.
+    - Include CSS styles if require by creating a file in Content folder with the name "Styles.css".
+
+- Depedncy Injuction
+    - Install the Unity.Mvc5 package
+    - Install the Unity.WebApi Package it will create a file in App_Start folder with the name "UnityConfig.cs" which can be used to create the service objects by using depdency injuction.
+
+-  Create HomeController and prepare the HomePage(Index)
+    - Create a partial view and Render into Index page
+    - Aboutus and Contactus Views with static data.
+
+- Create AccountController and Provide the Login and Registration
+    - Registration
+    - Login
+    - Logout
+    - ChangeProfile
+    - Edit Password
+
+- In HomeController implement following actions and Views like
+    - categories
+    - Questions
+
+
+
+
+
+
+
+
+

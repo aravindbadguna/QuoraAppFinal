@@ -1,0 +1,79 @@
+﻿@using System.Web.Optimization;
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.QuoraTool</title>
+  @Styles.Render("~/Styles/bootstrap")
+  @Styles.Render("~/Styles/site")
+  @Scripts.Render("~/Scripts/bootstrap")
+
+  <link href="~/Content/Styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Quora Web App Tool</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Home/About">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Home/Contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/allcategories">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/allquestions">Questions</a>
+          </li>
+
+          @if (Session["CurrentUserName"] == null)
+          {
+            <li class="nav-item">
+              <a class="nav-link" href="/Account/Login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Account/Register">Register</a>
+            </li>
+          }
+          @if (Session["CurrentUserName"] != null)
+          {
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <img src="~/Images/user.png" width="20px" alt="User Image" />
+                @Session["CurrentUserName"]
+              </a>
+              <div class="dropdown-menu bg-dark">
+                <a class="dropdown-item" href="/Account/Logout">Logout</a>
+                <a class="dropdown-item" href="/Account/ChangeProfile">Edit Profile</a>
+                <a class="dropdown-item" href="/Account/ChangePassword">Change Password</a>
+              </div>
+            </li>
+          }
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="/home/search">
+          <input class="form-control mr-sm-2" type="search" name="str" placeholder="Search">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    @RenderBody()
+    <footer class="page-footer font-small blue">
+      <div class="footer-copyright text-center py-3">
+        © 2020 Naresh IT - Quora Tool:
+        <a href="http://www.nareshit.com/"> Naresh IT</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

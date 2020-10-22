@@ -1,0 +1,31 @@
+﻿@model List<QuoraApp.ViewModels.QuestionViewModel>
+@{
+  ViewBag.Title = "Home";
+}
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="jumbotron">
+      <h1>Learn, Shared and Build</h1>
+      <h3>Each time over 100 million developers used this tool to get clarify the doubts about the .Net Tech Stack which includes UI as well</h3>
+      <p class="lead">Join the World's largest developer community forum.</p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      @foreach (var item in Model)
+      {
+        Html.RenderPartial("_Questions", item);
+      }
+    </table>
+    @if(Session["CurrentUserName"] != null)
+    {
+      <a href="/Questions/Create" class="btn btn-primary">Add Question</a>
+    }
+
+  </div>
+</div>
+

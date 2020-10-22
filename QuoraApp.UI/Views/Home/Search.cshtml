@@ -1,0 +1,22 @@
+﻿@model List<QuoraApp.ViewModels.QuestionViewModel>
+
+@{
+  ViewBag.Title = "Search";
+}
+
+<div class="row">
+  <div class="col-sm-12">
+    <h3>Search results for <span class="text-info">@ViewBag.str</span></h3>
+    <table class="table">
+      @foreach (var item in Model)
+      {
+        Html.RenderPartial("_Questions", item);
+      }
+    </table>
+  </div>
+</div>
+<script>
+    $("a[href='/allquestions']").attr("id", "active");
+</script>
+
+
